@@ -55,15 +55,14 @@ Future<void> fetchWeight() async {
 
 String AverageWeight(List<int> playerWeights) {
   num sum = 0;
-  String average;
   print(playerWeights);
   playerWeights.removeWhere((item) => item == null);
   playerWeights.join(', ');
-  for (int i = 0; i < playerWeights.length; i++) {
-    sum = sum + playerWeights[i];
-  }
-  average = (sum / playerWeights.length).toStringAsFixed(2);
-  return average;
+ // for (int i = 0; i < playerWeights.length; i++) {
+ //   sum = sum + playerWeights[i];
+//  }
+  playerWeights.forEach((e)=>sum=sum+e);
+  return (sum / playerWeights.length).toStringAsFixed(2);
 }
 
 calPoint(Map<String, double> map1, Map<String, double> map2, m1) {
