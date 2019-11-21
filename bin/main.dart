@@ -32,11 +32,11 @@ waitForFetchWeight() async {
 List<int> playerWeights = [];
 
 Future balldontlie(int numberOfCalls) async {
-  Executor executor = Executor(concurrency: 5);
+  Executor executor = Executor(concurrency: 3);
   for (int i = 0; i < numberOfCalls; i++) {
     executor.scheduleTask(waitForFetchWeight);
   }
-  await executor.join();
+  await executor.join(withWaiting: true);
   print(AverageWeight(playerWeights));
 }
 
